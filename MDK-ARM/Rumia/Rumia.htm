@@ -3,7 +3,7 @@
 <title>Static Call Graph - [Rumia\Rumia.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image Rumia\Rumia.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Mon Oct  7 13:21:52 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Mon Oct  7 17:50:41 2024
 <BR><P>
 <H3>Maximum Stack Usage =        236 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -444,7 +444,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[5b]"></a>Chassis_Control</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, chassis.o(.text.Chassis_Control))
+<P><STRONG><a name="[5b]"></a>Chassis_Control</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, chassis.o(.text.Chassis_Control))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Chassis_Control &rArr; Chassis_Output
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Output
@@ -1033,15 +1033,17 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a5]"></a>RaspCom_Receive</STRONG> (Thumb, 94 bytes, Stack size 0 bytes, raspcom.o(.text.RaspCom_Receive))
+<P><STRONG><a name="[a5]"></a>RaspCom_Receive</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, raspcom.o(.text.RaspCom_Receive))
 <BR><BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_DMAIdleCallback
 </UL>
 
-<P><STRONG><a name="[9d]"></a>Remote_Ctrl</STRONG> (Thumb, 496 bytes, Stack size 24 bytes, remote_ctrl.o(.text.Remote_Ctrl))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Remote_Ctrl &rArr; Arm_SetAngle &rArr; __aeabi_fmul
+<P><STRONG><a name="[9d]"></a>Remote_Ctrl</STRONG> (Thumb, 566 bytes, Stack size 32 bytes, remote_ctrl.o(.text.Remote_Ctrl))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Remote_Ctrl &rArr; Arm_SetAngle &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpge
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fcmpgt
@@ -1254,6 +1256,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_f2iz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Arm_Control
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Remote_Ctrl
 </UL>
 
 <P><STRONG><a name="[b9]"></a>_ffix</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, ffix.o(x$fpl$ffix), UNUSED)
@@ -1283,6 +1286,7 @@ Global Symbols
 
 <P><STRONG><a name="[98]"></a>__aeabi_ui2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu))
 <BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_ReadEncoder
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Remote_Ctrl
 </UL>
 
 <P><STRONG><a name="[f1]"></a>_ffltu</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu), UNUSED)

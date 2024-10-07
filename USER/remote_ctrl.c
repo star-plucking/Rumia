@@ -26,11 +26,13 @@ uint16_t Remote_CtrlMode = 0;
 uint64_t Remotr_Update_tick = 0;
 
 #define BASE_STRAIGHT_SPEED 1800
-#define BASE_ROTATE_SPEED 1000
+#define BASE_ROTATE_SPEED 1800
 
-#define SPEED_MAGNIFICATION 1
+#define SPEED_MAGNIFICATION 14.7f
 
 #define JOINT_DECRACION 0.02f
+
+uint8_t Block_num = 0;
 
 /**
  * @brief 遥控器初始化
@@ -182,6 +184,7 @@ void Remote_Ctrl(void)
     }
     else if (Remote_CtrlMode == REMOTE_CTRL_MODE_AUTO)
     {
+        
         // 自动模式代码，待补充
     }
 }

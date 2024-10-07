@@ -98,10 +98,10 @@ void Chassis_SetSpeed(int16_t vx, int16_t vy, int16_t vw)
  */
 void Chassis_Mecnum_Calc(int16_t vx, int16_t vy, int16_t vw)
 {
-    chassis_speed.motor[0].speed = -(vx + vy + vw);
-    chassis_speed.motor[1].speed = vx - vy + vw;
-    chassis_speed.motor[2].speed = -vx - vy + vw;
-    chassis_speed.motor[3].speed = -vx + vy + vw;
+    chassis_speed.motor[0].speed = -(vx - vy - vw);    // 前左轮
+    chassis_speed.motor[1].speed = -(-vx - vy - vw);   // 前右轮
+    chassis_speed.motor[2].speed = -(-vx - vy + vw);   // 后右轮
+    chassis_speed.motor[3].speed = -(vx - vy + vw);    // 后左轮
 }
 
 /**

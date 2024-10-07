@@ -16,7 +16,7 @@ extern Arm_Servo_t servo_j2;
 extern Arm_Gripper_t gripper;
 
 RaspCom_t rasp_com;
-uint8_t rp_rxbuff[4];
+uint8_t rp_rxbuff[16];
 
 /**
  * @brief 树莓派通信初始化
@@ -28,7 +28,7 @@ void RaspCom_Init(UART_HandleTypeDef *huart)
     rasp_com.state = RASP_COM_INIT;
     __HAL_UART_CLEAR_IDLEFLAG(huart);          // 清除空闲中断标志
     __HAL_UART_ENABLE_IT(huart, UART_IT_IDLE); // 启UART的空闲中
-    HAL_UART_Receive_DMA(huart, (uint8_t *)rp_rxbuff, 4);
+    HAL_UART_Receive_DMA(huart, (uint8_t *)rp_rxbuff, 10);
     rasp_com.state = RASP_COM_SUCCESS;
 		rasp_com.huart = huart;
 }
@@ -44,24 +44,23 @@ void RaspCom_Send(uint8_t tx_message)
     tx_buffer[0] = RASP_COM_HEAD;
     tx_buffer[1] = tx_message;
     tx_buffer[2] = RASP_COM_TAIL;
-    HAL_UART_Transmit(rasp_com.huart, (uint8_t *)tx_buffer, 3, 10);
+    HAL_UART_Transmit(rasp_com.huart, (uint8_t *)tx_buffer, 3, 16);
 }
 
 void RaspCom_Receive(RaspCom_t *rasp_com)
 {
-    if (rp_rxbuff[0] == RASP_COM_HEAD && rp_rxbuff[3] == RASP_COM_TAIL)
+    if (rp_rxbuff[0] == RASP_COM_HEAD && rp_rxbuff[15] == RASP_COM_TAIL && rp_rxbuff[1] == 1)
     {
-        rasp_com->result = (rp_rxbuff[1] >> 7) & 0x01;
-        rasp_com->color = (rp_rxbuff[1] >> 6) & 0x02;
+        rasp_com->result = rp_rxbuff[1];
+        rasp_com->color = rp_rxbuff[2];
+        for(int i = 0;i<6;i++)
+        {
+            for(int j = 0;j<2;j++)
+            {
+                rasp_com->type[i][j] = rp_rxbuff[3+i*2+j];
+            }
+        }
 
-        // 按照bit位读取,color后空开两位
-        rasp_com->type[0] = (rp_rxbuff[1] >> 2) & 0x03;
-        rasp_com->type[1] = (rp_rxbuff[1] >> 0) & 0x03;
-        rasp_com->type[2] = (rp_rxbuff[2] >> 6) & 0x03;
-        rasp_com->type[3] = (rp_rxbuff[2] >> 4) & 0x03;
-        rasp_com->type[4] = (rp_rxbuff[2] >> 2) & 0x03;
-        rasp_com->type[5] = (rp_rxbuff[2] >> 0) & 0x03;
-        
         rasp_com->state = RASP_COM_SUCCESS;
     }
     else

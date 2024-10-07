@@ -32,7 +32,7 @@ typedef struct
 {
     unsigned char result;
     unsigned char color;
-    unsigned char type[6]; 
+    unsigned char type[6][2]; 
     uint8_t state;
 	  UART_HandleTypeDef *huart;
 } RaspCom_t;

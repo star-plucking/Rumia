@@ -27,10 +27,10 @@ extern TIM_HandleTypeDef htim4;
  * 机械臂的位置将使用角度制记录。
  */
 float fixed_point[4][2] = {
-   {20.0f, 180.0f},
-   {20.0f, 180.0f},
-   {20.0f, 180.0f},
-   {20.0f, 180.0f},
+   {53.9781799f, 226.881f},
+   {36.0945473f, 13.0f},
+   {35.5709076f, 13.0f},
+   {34.2f, 240.0f},
 };
 
 /**
@@ -51,7 +51,7 @@ void Arm_Init(void)
     motor_j1.pin = GPIO_PIN_15;
     motor_j1.state = GPIO_PIN_RESET;
 
-    PID_Init(&motor_j1.pid, 7000.0f, 0.02f, 0.0f, 20000.0f, -20000.0f);
+    PID_Init(&motor_j1.pid, 6000.0f, 0.005f, 0.0f, 20000.0f, -20000.0f);
 
     servo_j2.angle = 2400.0f;
     servo_j2.htim = &htim4;
