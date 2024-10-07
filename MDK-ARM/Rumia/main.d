@@ -30,4 +30,4 @@ rumia/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
   ..\Core\Inc\dma.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
   ..\Core\Inc\gpio.h ..\USER\valuepack.h ..\USER\remote_ctrl.h \
-  ..\USER\chassis.h ..\USER\arm.h ..\USER\pid.h
+  ..\USER\chassis.h ..\USER\arm.h ..\USER\pid.h ..\USER\raspCom.h

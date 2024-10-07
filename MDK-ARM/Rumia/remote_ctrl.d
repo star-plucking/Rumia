@@ -28,4 +28,5 @@ rumia/remote_ctrl.o: ..\USER\remote_ctrl.c ..\USER\remote_ctrl.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h \
-  ..\USER\valuepack.h ..\USER\chassis.h ..\USER\arm.h ..\USER\pid.h
+  ..\USER\valuepack.h ..\USER\chassis.h ..\USER\arm.h ..\USER\pid.h \
+  ..\USER\raspCom.h

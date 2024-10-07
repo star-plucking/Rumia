@@ -16,6 +16,7 @@
 #include "valuepack.h"
 #include "chassis.h"
 #include "arm.h"
+#include "raspCom.h"
 
 typedef enum
 {

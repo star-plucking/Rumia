@@ -16,7 +16,7 @@
 #include "pid.h"
 
 #define GRIPPER_OPEN 1000
-#define GRIPPER_CLOSE 2000
+#define GRIPPER_CLOSE 1900
 
 #define MOTOR_J1_DECRACIO 90.0f
 #define MOTOR_J1_ENCODER_LINES 22

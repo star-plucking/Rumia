@@ -63,10 +63,6 @@ void Error_Handler(void);
 #define REMOTE_RX_GPIO_Port GPIOA
 #define Motor2_Pin GPIO_PIN_0
 #define Motor2_GPIO_Port GPIOB
-#define Motor4_Pin GPIO_PIN_9
-#define Motor4_GPIO_Port GPIOA
-#define Motor3_Pin GPIO_PIN_11
-#define Motor3_GPIO_Port GPIOA
 #define GPIO_J1_Pin GPIO_PIN_15
 #define GPIO_J1_GPIO_Port GPIOA
 

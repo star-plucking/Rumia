@@ -19,11 +19,13 @@ extern Arm_Motor_t motor_j1;
 extern Arm_Servo_t servo_j2;
 extern Arm_Gripper_t gripper;
 extern RxPack rx_pack;
+extern RaspCom_t rasp_com;
+extern float fixed_point[4][2];
 
 uint16_t Remote_CtrlMode = 0;
 uint64_t Remotr_Update_tick = 0;
 
-#define BASE_STRAIGHT_SPEED 1000
+#define BASE_STRAIGHT_SPEED 1800
 #define BASE_ROTATE_SPEED 1000
 
 #define SPEED_MAGNIFICATION 1
@@ -58,7 +60,7 @@ void Remote_Ctrl(void)
     {
         Remote_CtrlMode = REMOTE_CTRL_MODE_MANUL;
     }
-    else if (rx_pack.bools[6] == 1)
+    else if (rx_pack.bools[6] == 1 && rasp_com.state == RASP_COM_SUCCESS)
     {
         Remote_CtrlMode = REMOTE_CTRL_MODE_AUTO;
     }
@@ -135,6 +137,29 @@ void Remote_Ctrl(void)
             temp_angle_j2 -= JOINT_DECRACION*2;
         }
 
+        //固定点模式
+        if(rx_pack.bools[12] == 1)
+        {
+            temp_angle_j1 = fixed_point[0][0];
+            temp_angle_j2 = fixed_point[0][1];
+        }
+        else if(rx_pack.bools[13] == 1)
+        {
+            temp_angle_j1 = fixed_point[1][0];
+            temp_angle_j2 = fixed_point[1][1];
+        }
+        else if(rx_pack.bools[14] == 1)
+        {
+            temp_angle_j1 = fixed_point[2][0];
+            temp_angle_j2 = fixed_point[2][1];
+        }
+        else if(rx_pack.bools[15] == 1)
+        {
+            temp_angle_j1 = fixed_point[3][0];
+            temp_angle_j2 = fixed_point[3][1];
+        }
+        
+        //限制关节角度
         if(temp_angle_j1 > 80.0f)
         {
             temp_angle_j1 = 80.0f;
@@ -143,7 +168,6 @@ void Remote_Ctrl(void)
         {
             temp_angle_j1 = 0.0f;
         }
-
         if(temp_angle_j2 > 256.0f)
         {
             temp_angle_j2 = 256.0f;
@@ -153,6 +177,7 @@ void Remote_Ctrl(void)
             temp_angle_j2 = 13.0f;
         }
 
+        //设置关节角度
         Arm_SetAngle(temp_angle_j1, temp_angle_j2);
     }
     else if (Remote_CtrlMode == REMOTE_CTRL_MODE_AUTO)

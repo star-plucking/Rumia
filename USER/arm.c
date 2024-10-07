@@ -22,6 +22,18 @@ extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim4;
 
 /**
+ * 鉴于操控模式的需求，需要给机械臂增加固定点功能，用于标定机械臂的位置；
+ * 此处将使用一个数组来存储固定点的位置，不存储夹爪的位置；
+ * 机械臂的位置将使用角度制记录。
+ */
+float fixed_point[4][2] = {
+   {20.0f, 180.0f},
+   {20.0f, 180.0f},
+   {20.0f, 180.0f},
+   {20.0f, 180.0f},
+};
+
+/**
  * @brief 小臂初始化
  * @param None
  * @retval None
@@ -31,7 +43,7 @@ void Arm_Init(void)
 {
     motor_j1.speed = 0;
     motor_j1.angle = 0;
-    motor_j1.angle_ref = 5;
+    motor_j1.angle_ref = 22;
     motor_j1.circles = 0;
     motor_j1.htim = &htim4;
     motor_j1.channel = TIM_CHANNEL_1;
@@ -45,7 +57,7 @@ void Arm_Init(void)
     servo_j2.htim = &htim4;
     servo_j2.channel = TIM_CHANNEL_3;
 
-    gripper.angle =  1000.0f;
+    gripper.angle =  GRIPPER_OPEN;
     gripper.htim = &htim4;
     gripper.channel = TIM_CHANNEL_4;
 

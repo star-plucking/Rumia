@@ -34,29 +34,29 @@ void Chassis_Init(void)
     chassis_speed.vy = 0;
     chassis_speed.vw = 0;
 
-    chassis_speed.motor[0].htim = &htim1;
-    chassis_speed.motor[0].channel = TIM_CHANNEL_1;
-    chassis_speed.motor[0].gpio = GPIOA;
-    chassis_speed.motor[0].pin = GPIO_PIN_9;
-    chassis_speed.motor[0].state = GPIO_PIN_RESET;
-
-    chassis_speed.motor[1].htim = &htim3;
-    chassis_speed.motor[1].channel = TIM_CHANNEL_2;
+    chassis_speed.motor[1].htim = &htim1;
+    chassis_speed.motor[1].channel = TIM_CHANNEL_1;
     chassis_speed.motor[1].gpio = GPIOA;
-    chassis_speed.motor[1].pin = GPIO_PIN_7;
+    chassis_speed.motor[1].pin = GPIO_PIN_9;
     chassis_speed.motor[1].state = GPIO_PIN_RESET;
 
-    chassis_speed.motor[2].htim = &htim1;
-    chassis_speed.motor[2].channel = TIM_CHANNEL_3;
+    chassis_speed.motor[2].htim = &htim3;
+    chassis_speed.motor[2].channel = TIM_CHANNEL_2;
     chassis_speed.motor[2].gpio = GPIOA;
-    chassis_speed.motor[2].pin = GPIO_PIN_10;
+    chassis_speed.motor[2].pin = GPIO_PIN_6;
     chassis_speed.motor[2].state = GPIO_PIN_RESET;
 
-    chassis_speed.motor[3].htim = &htim3;
-    chassis_speed.motor[3].channel = TIM_CHANNEL_4;
-    chassis_speed.motor[3].gpio = GPIOB;
-    chassis_speed.motor[3].pin = GPIO_PIN_0;
+    chassis_speed.motor[3].htim = &htim1;
+    chassis_speed.motor[3].channel = TIM_CHANNEL_3;
+    chassis_speed.motor[3].gpio = GPIOA;
+    chassis_speed.motor[3].pin = GPIO_PIN_11;
     chassis_speed.motor[3].state = GPIO_PIN_RESET;
+
+    chassis_speed.motor[0].htim = &htim3;
+    chassis_speed.motor[0].channel = TIM_CHANNEL_4;
+    chassis_speed.motor[0].gpio = GPIOB;
+    chassis_speed.motor[0].pin = GPIO_PIN_0;
+    chassis_speed.motor[0].state = GPIO_PIN_RESET;
 
 
 
@@ -98,7 +98,7 @@ void Chassis_SetSpeed(int16_t vx, int16_t vy, int16_t vw)
  */
 void Chassis_Mecnum_Calc(int16_t vx, int16_t vy, int16_t vw)
 {
-    chassis_speed.motor[0].speed = vx + vy + vw;
+    chassis_speed.motor[0].speed = -(vx + vy + vw);
     chassis_speed.motor[1].speed = vx - vy + vw;
     chassis_speed.motor[2].speed = -vx - vy + vw;
     chassis_speed.motor[3].speed = -vx + vy + vw;

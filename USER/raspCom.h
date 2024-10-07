@@ -33,10 +33,25 @@ typedef struct
     unsigned char result;
     unsigned char color;
     unsigned char type[6]; 
+    uint8_t state;
+	  UART_HandleTypeDef *huart;
 } RaspCom_t;
 
-void RaspCom_Init(void);
-void RaspCom_Send(RaspCom_t *rasp_com);
+typedef enum
+{
+    RASP_COM_INIT = 0,
+    RASP_COM_LOSS,
+    RASP_COM_SUCCESS,
+} RaspComState_t;
+
+typedef enum
+{
+    RED = 0,
+    BLUE,
+} RaspComColor_t;
+
+void RaspCom_Init(UART_HandleTypeDef *huart);
+void RaspCom_Send(uint8_t tx_message);
 void RaspCom_Receive(RaspCom_t *rasp_com);
 
 #endif
