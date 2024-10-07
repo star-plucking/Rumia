@@ -1,6 +1,6 @@
 /**
  * @file raspCom.c
- * @author your name (you@domain.com)
+ * @author Zhou Xu
  * @brief
  * @version 0.1
  * @date 2024-10-07

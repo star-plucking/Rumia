@@ -2307,7 +2307,7 @@ Image Symbol Table
     PID_Init                                 0x080032a1   Thumb Code    28  pid.o(.text.PID_Init)
     PendSV_Handler                           0x080032bd   Thumb Code     2  stm32f1xx_it.o(.text.PendSV_Handler)
     RaspCom_Init                             0x080032c1   Thumb Code    60  raspcom.o(.text.RaspCom_Init)
-    RaspCom_Receive                          0x080032fd   Thumb Code    96  raspcom.o(.text.RaspCom_Receive)
+    RaspCom_Receive                          0x080032fd   Thumb Code    94  raspcom.o(.text.RaspCom_Receive)
     Remote_Ctrl                              0x0800335d   Thumb Code   496  remote_ctrl.o(.text.Remote_Ctrl)
     Remote_Init                              0x0800354d   Thumb Code    12  remote_ctrl.o(.text.Remote_Init)
     SVC_Handler                              0x08003559   Thumb Code     2  stm32f1xx_it.o(.text.SVC_Handler)
@@ -2617,7 +2617,8 @@ Memory Map of the image
     0x080032bc   0x080032bc   0x00000002   Code   RO          119    .text.PendSV_Handler  stm32f1xx_it.o
     0x080032be   0x080032be   0x00000002   PAD
     0x080032c0   0x080032c0   0x0000003c   Code   RO          974    .text.RaspCom_Init  raspcom.o
-    0x080032fc   0x080032fc   0x00000060   Code   RO          978    .text.RaspCom_Receive  raspcom.o
+    0x080032fc   0x080032fc   0x0000005e   Code   RO          978    .text.RaspCom_Receive  raspcom.o
+    0x0800335a   0x0800335a   0x00000002   PAD
     0x0800335c   0x0800335c   0x000001f0   Code   RO          991    .text.Remote_Ctrl   remote_ctrl.o
     0x0800354c   0x0800354c   0x0000000c   Code   RO          989    .text.Remote_Init   remote_ctrl.o
     0x08003558   0x08003558   0x00000002   Code   RO          115    .text.SVC_Handler   stm32f1xx_it.o
@@ -2713,7 +2714,7 @@ Image component sizes
        214          0          0          0          0       1580   gpio.o
        388          0          0          0         24       6605   main.o
        162          0          0          0          0       1155   pid.o
-       156          0          0          0         20       3974   raspcom.o
+       154          0          0          0         20       3963   raspcom.o
        508          0          0          0         16       4362   remote_ctrl.o
         64         26        236          0       1536        788   startup_stm32f103xb.o
        188          0          0          8          4       5734   stm32f1xx_hal.o
@@ -2732,9 +2733,9 @@ Image component sizes
        332          0          0          2        156       4863   valuepack.o
 
     ----------------------------------------------------------------------
-     15020         54        310         48       2552     203967   Object Totals
+     15020         54        310         48       2552     203956   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-       120          0          0          2          4          0   (incl. Padding)
+       122          0          0          2          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2797,8 +2798,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     17202        182        310         48       2648     204579   Grand Totals
-     17202        182        310         48       2648     204579   ELF Image Totals
+     17202        182        310         48       2648     204568   Grand Totals
+     17202        182        310         48       2648     204568   ELF Image Totals
      17202        182        310         48          0          0   ROM Totals
 
 ==============================================================================
