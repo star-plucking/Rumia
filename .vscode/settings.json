@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "valuepack.h": "c",
-        "pid.h": "c",
-        "stm32f1xx_hal.h": "c"
-    }
-}

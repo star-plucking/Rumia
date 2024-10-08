@@ -28,5 +28,6 @@ typedef enum
 
 void Remote_Init(void);
 void Remote_Ctrl(void);
+void Remote_Process_Mode(void);
 
 #endif
