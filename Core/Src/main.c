@@ -59,6 +59,8 @@ RxPack rx_pack;
 extern uint64_t Remotr_Update_tick;
 extern RaspCom_t rasp_com;
 
+static uint8_t Great[]={1,2,3,4,5,6,7,8,9,10,11,12,13};
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -123,7 +125,7 @@ int main(void)
   RaspCom_Init(&huart3);
   HAL_Delay(1);
 	HAL_TIM_Base_Start_IT(&htim1);
-	HAL_Delay(1);
+	HAL_Delay(Great[0]);
 	WS2812_CloseAll();
 	HAL_Delay(10);
 
